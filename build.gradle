@@ -14,19 +14,22 @@ buildscript {
 }
 
 allprojects { project ->
-    apply plugin: 'java'
-    apply plugin: 'maven'
-    apply plugin: 'signing'
-
-    group = 'com.didiglobal.booster'
-    version = '0.4.1'
-
     repositories {
         mavenLocal()
         google()
         mavenCentral()
         jcenter()
     }
+
+    if (project.name == 'app') {
+        return
+    }
+    apply plugin: 'java'
+    apply plugin: 'maven'
+    apply plugin: 'signing'
+
+    group = 'com.didiglobal.booster'
+    version = '0.4.1'
 
     javadoc {
         failOnError = false
@@ -47,7 +50,7 @@ allprojects { project ->
     }
 
     signing {
-        sign configurations.archives
+//        sign configurations.archives
     }
 
     uploadArchives {
@@ -110,6 +113,9 @@ allprojects { project ->
 }
 
 subprojects { project ->
+    if (project.name == 'app') {
+        return
+    }
     rootProject.clean.dependsOn project.clean
 }
 
