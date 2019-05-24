@@ -93,10 +93,10 @@ allprojects { project ->
                     }
                 }
                 repository(url: 'https://oss.sonatype.org/service/local/staging/deploy/maven2/') {
-                    authentication(userName: OSSRH_USERNAME, password: OSSRH_PASSWORD)
+                    authentication(userName: "admin", password: "admin")
                 }
                 snapshotRepository(url: 'https://oss.sonatype.org/content/repositories/snapshots/') {
-                    authentication(userName: OSSRH_USERNAME, password: OSSRH_PASSWORD)
+                    authentication(userName: "admin", password: "admin")
                 }
             }
         }
